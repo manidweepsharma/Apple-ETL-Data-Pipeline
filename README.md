@@ -40,3 +40,41 @@ Parquet
 Git (for version control)
 
 Jupyter/Databricks Notebooks (for exploration and documentation)
+
+
+
+ETL Pipeline Flow
+Extract
+
+Data can be read from multiple sources:
+
+CSV files
+
+Parquet files
+
+Delta tables
+
+A Factory Pattern is used to dynamically select the appropriate extractor for each data source type.
+
+Transform
+
+The extracted data is processed and transformed using PySpark (Spark SQL).
+
+Load
+
+The transformed data is then loaded into one or both of the following destinations:
+
+Data Lake
+
+Delta Table
+
+In summary:
+CSV / Parquet / Delta Table → [Factory Pattern] → PySpark (Spark SQL) → Data Lake / Delta Table
+
+Stages:
+
+Extract (from various sources using Factory Pattern)
+
+Transform (with PySpark/Spark SQL)
+
+Load (to Data Lake or Delta Table)
